@@ -90,7 +90,10 @@ jobs:
     - name: Compile the firmware
       id: compile
       run: |
-        cd openwrt
+        mkdir -p /mnt/openwrt-build
+        export OPENWRT_BUILD_DIR=/mnt/openwrt-build
+        cd ${OPENWRT_BUILD_DIR}
+        # cd openwrt
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> $GITHUB_OUTPUT
