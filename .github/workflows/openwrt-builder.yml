@@ -87,11 +87,6 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Clean build directory
-      run: |
-        make clean
-        rm -rf bin/targets/* tmp/*
-
     - name: Compile the firmware
       id: compile
       run: |
